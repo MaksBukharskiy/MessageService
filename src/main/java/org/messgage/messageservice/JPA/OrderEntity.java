@@ -9,21 +9,16 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String orderId;
 
-    @Column(name = "product")
     private String product;
-
-    @Column(name = "product")
     private Integer quantity;
-
-    @Column(name = "date")
     private LocalDateTime createdAt;
 }
