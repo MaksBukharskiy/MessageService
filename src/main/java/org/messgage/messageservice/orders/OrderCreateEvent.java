@@ -1,6 +1,6 @@
 package org.messgage.messageservice.orders;
 
-public record Order(
+public record OrderCreateEvent(
         String orderId,
         String product,
         Integer quantity
