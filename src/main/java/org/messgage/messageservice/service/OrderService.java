@@ -31,4 +31,10 @@ public class OrderService {
 
             log.info("\n\n ✅Order saved: {}\n", entity);
         }
+
+        public void handle(OrderCreateEvent event){
+            if ("fail".equals(event.product())) {
+                throw new RuntimeException("Test error");
+            }
+        }
 }
