@@ -26,6 +26,11 @@ public class OrderService {
             entity.setQuantity(orderCreateEvent.quantity());
             entity.setCreatedAt(LocalDateTime.now());
 
+            if (repository.existsById(orderCreateEvent.orderId())) {
+                log.warn("⚠️ Duplicate event ignored: {}", orderCreateEvent.orderId());
+                return;
+            }
+
             repository.save(entity);
             kafkaTemplate.send("orders", orderCreateEvent);
 
