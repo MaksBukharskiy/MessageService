@@ -19,17 +19,17 @@ public class OrderService {
         private final KafkaTemplate<String, OrderCreateEvent> kafkaTemplate;
 
         public void process(OrderCreateEvent orderCreateEvent){
+
+            if (repository.existsById(orderCreateEvent.orderId())) {
+                log.warn("⚠️ Duplicate event ignored: {}", orderCreateEvent.orderId());
+                return;
+            }
             OrderEntity entity = new OrderEntity();
 
             entity.setOrderId(orderCreateEvent.orderId());
             entity.setProduct(orderCreateEvent.product());
             entity.setQuantity(orderCreateEvent.quantity());
             entity.setCreatedAt(LocalDateTime.now());
-
-            if (repository.existsById(orderCreateEvent.orderId())) {
-                log.warn("⚠️ Duplicate event ignored: {}", orderCreateEvent.orderId());
-                return;
-            }
 
             repository.save(entity);
             kafkaTemplate.send("orders", orderCreateEvent);
