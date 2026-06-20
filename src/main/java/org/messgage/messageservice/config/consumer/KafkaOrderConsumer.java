@@ -2,7 +2,6 @@ package org.messgage.messageservice.config.consumer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.internals.AcknowledgementBatch;
 import org.messgage.messageservice.orders.OrderCreateEvent;
 import org.messgage.messageservice.service.OrderService;
 import org.springframework.kafka.annotation.BackOff;

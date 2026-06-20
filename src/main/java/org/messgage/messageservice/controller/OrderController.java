@@ -1,4 +1,4 @@
-package org.messgage.messageservice.controllers;
+package org.messgage.messageservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

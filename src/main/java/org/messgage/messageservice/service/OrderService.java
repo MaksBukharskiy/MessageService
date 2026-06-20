@@ -2,8 +2,8 @@ package org.messgage.messageservice.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.messgage.messageservice.JPA.OrderEntity;
-import org.messgage.messageservice.JPA.repository.OrderRepository;
+import org.messgage.messageservice.jpa.OrderEntity;
+import org.messgage.messageservice.jpa.repository.OrderRepository;
 import org.messgage.messageservice.orders.OrderCreateEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
